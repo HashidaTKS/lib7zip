@@ -151,7 +151,8 @@ class C7ZipOutStream
 public:
 	virtual int Write(const void *data, unsigned int size, unsigned int *processedSize) = 0;
 	virtual int Seek(__int64 offset, unsigned int seekOrigin, unsigned __int64 *newPosition) = 0;
-	virtual int SetSize(unsigned __int64 size) = 0;
+	virtual int SetSize(unsigned __int64 size) = 0;.
+	virtual int ReopenForIndex(unsigned int index) { return 0; }
 };
 
 class C7ZipArchive : public virtual C7ZipObject
