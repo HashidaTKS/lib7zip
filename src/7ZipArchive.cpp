@@ -291,6 +291,8 @@ STDMETHODIMP CArchiveExtractCallback::GetStream(UInt32 index,
 	if (askExtractMode != NArchive::NExtract::NAskMode::kExtract)
 		return S_OK;
 
+	if (m_pOutStream->ReopenForIndex(index) != 0)
+		return E_FAIL;
 
 	_outFileStreamSpec = new C7ZipOutStreamWrap(m_pOutStream);
 	CMyComPtr<ISequentialOutStream> outStreamLoc(_outFileStreamSpec);
